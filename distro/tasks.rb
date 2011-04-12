@@ -9,7 +9,7 @@ REE_VERSION = begin
 	$1
 end
 DISTDIR = "ruby-enterprise-#{VENDOR_RUBY_VERSION}-#{REE_VERSION}"
-RUBYGEMS_URL = "http://rubyforge.org/frs/download.php/55066/rubygems-1.3.2.tgz"
+RUBYGEMS_URL = "http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.tgz"
 RUBYGEMS_PACKAGE = RUBYGEMS_URL.sub(/.*\//, '')
 
 desc "Create a distribution directory"
@@ -129,9 +129,11 @@ def create_distdir(distdir = DISTDIR)
 		end
 	end
 	rubygems_package = File.expand_path("distro/#{RUBYGEMS_PACKAGE}")
+	rubygems_patch = File.expand_path("distro/rubygems_disable_docs.patch")
 	Dir.chdir(distdir) do
 		sh "tar", "xzf", rubygems_package
 		sh "mv rubygems* rubygems"
+		sh "patch -p0 < #{rubygems_patch}"
 	end
 end
 
