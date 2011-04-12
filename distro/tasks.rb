@@ -60,7 +60,7 @@ task 'package:debian' do
 		f.write(template.result(binding))
 	end
 	
-	sh "fakeroot dpkg -b fakeroot ruby-enterprise_#{VENDOR_RUBY_VERSION}-#{REE_VERSION}_#{arch}.deb"
+	sh "fakeroot dpkg -b fakeroot ruby-enterprise186_#{VENDOR_RUBY_VERSION}-#{REE_VERSION}_#{arch}.deb"
 end
 
 desc "Generate the documentation HTML"

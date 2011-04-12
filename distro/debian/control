@@ -1,4 +1,4 @@
-Package: ruby-enterprise
+Package: ruby-enterprise186
 Version: <%= VENDOR_RUBY_VERSION %>-<%= REE_VERSION %>
 Section: interpreters
 Priority: optional
